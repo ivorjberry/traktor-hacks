@@ -141,7 +141,7 @@ Item {
       Item {
         id: timeBox
         width : display.infoBoxesWidth
-        height: display.secondRowHeight
+        height: display.firstRowHeight
 
         Rectangle {
           anchors.fill: parent
@@ -151,7 +151,7 @@ Item {
 
         Text {
           text: deckInfo.remainingTimeString
-          font.pixelSize: 45
+          font.pixelSize: 24
           font.family: "Roboto"
           color: trackEndBlinkTimer.blink ? "black": "white"
           anchors.fill: parent
@@ -181,7 +181,7 @@ Item {
       Item {
         id: loopBox
         width : display.infoBoxesWidth
-        height: display.secondRowHeight
+        height: display.firstRowHeight
 
         Rectangle {
           anchors.fill: parent
@@ -191,7 +191,7 @@ Item {
 
         Text {
           text: deckInfo.loopSizeString
-          font.pixelSize: 45
+          font.pixelSize: 24
           font.family: "Roboto"
           color: deckInfo.loopActive ? "black" : ( deckInfo.shift ? colors.colorDeckGrey : colors.defaultTextColor )
           anchors.fill: parent
@@ -223,7 +223,32 @@ Item {
       trackLength:  deckInfo.trackLength
       elapsedTime:  deckInfo.elapsedTime
       audioStreamKey: ["PrimaryKey", deckInfo.primaryKey]
-    }
+    } // end stripe //
+
+    // STEM ROW //
+    
+    
+    
+    RowLayout {
+      id: fourthRow
+      spacing: display.spacing
+
+      // SLOT 1 DISPLAY //
+      Item {
+        
+        id: stemSlot1
+        height: display.firstRowHeight
+        width:  display.infoBoxesWidth/2
+        
+        Rectangle {
+          anchors.fill: parent
+          border.width: 2
+          border.color: colors.colorDeckDarkGrey
+          color: !deckInfo.deckId.stems.1.stemSelectedMuted ? deckInfo.stemSelectedBrightColor : colors.darkerColor(deckInfo.stemSelectedMidColor, 0.5) 
+          radius: display.boxesRadius
+        }
+      }
+    } // stem row
 
   }
 
