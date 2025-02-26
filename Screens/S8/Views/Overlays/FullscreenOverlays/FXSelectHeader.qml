@@ -15,7 +15,6 @@ Item {
   AppProperty { id: fxSelectProp2;    path: "app.traktor.fx." + (fxUnitId + 1) + ".select.2" }
   AppProperty { id: fxSelectProp3;    path: "app.traktor.fx." + (fxUnitId + 1) + ".select.3" }
   AppProperty { id: patternPlayerKitSelection; path: "app.traktor.fx." + (fxUnitId + 1) + ".pattern_player.kit_shortname" }
-  AppProperty { id: patternPlayerEnabled; path: "app.traktor.settings.pro.plus.pattern_player" }
 
   Row {
     spacing: 1
@@ -72,7 +71,7 @@ Item {
 
   function getHeaderTexts()
   {
-    if (patternPlayerEnabled.value && fxViewSelectProp.value == FxType.PatternPlayer)
+    if (fxViewSelectProp.value == FxType.PatternPlayer)
     {
       return [fxUnitName, patternPlayerKitSelection.description, "", ""];
     }

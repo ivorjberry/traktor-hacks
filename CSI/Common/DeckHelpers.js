@@ -7,12 +7,12 @@ function colorForDeck(deckIdx)
       case 1:
       case 2:
         // Deck A and B are color-coded in Blue
-        return Color.Purple;
+        return Color.Cyan;
 
       case 3:
       case 4:
         // Deck C and D are color-coded in Orange
-        return Color.Turquoise;
+        return Color.Purple;
     }
 
     // Fall-through...
