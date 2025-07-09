@@ -63,23 +63,10 @@ Module
 
     //------------------------- Lower pads to stem focus ---------------------------
 
-    WiresGroup
-    {
-      enabled: module.shift
-      Wire { from: "%surface%.pads.5"; to: "stems.1.fx_send_on" }
-      Wire { from: "%surface%.pads.6"; to: "stems.2.fx_send_on" }
-      Wire { from: "%surface%.pads.7"; to: "stems.3.fx_send_on" }
-      Wire { from: "%surface%.pads.8"; to: "stems.4.fx_send_on" }
-    }
-    WiresGroup
-    {
-      enabled: !module.shift
-
-      Wire { from: "%surface%.pads.5"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 1; defaultValue: 0 } }
-      Wire { from: "%surface%.pads.6"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 2; defaultValue: 0 } }
-      Wire { from: "%surface%.pads.7"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 3; defaultValue: 0 } }
-      Wire { from: "%surface%.pads.8"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 4; defaultValue: 0 } }
-    }
+    Wire { from: "%surface%.pads.5"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 1; defaultValue: 0 } }
+    Wire { from: "%surface%.pads.6"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 2; defaultValue: 0 } }
+    Wire { from: "%surface%.pads.7"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 3; defaultValue: 0 } }
+    Wire { from: "%surface%.pads.8"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".stems.active_stem"; value: 4; defaultValue: 0 } }
   }
 
 }
