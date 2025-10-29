@@ -28,4 +28,16 @@ Item {
     anchors.left: parent.left
     deckInfo: display.deckInfo
   }
+
+  // STEM MUTE INDICATOR //
+  Widgets.StemMuteIndicator
+  {
+    visible: display.deckInfo.isLoaded
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.leftMargin: 6
+    anchors.bottomMargin: 3
+    width: 306
+    deckInfo: display.deckInfo
+  }
 }
