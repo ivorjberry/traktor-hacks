@@ -10,11 +10,8 @@ Mapping
   MappingPropertyDescriptor {
     id: deckAssignmentProp
     type: MappingPropertyDescriptor.Integer
-    path: mapping.propertiesPath + ".deck_assignment"
-
-    value: DeviceAssignment.decks_a_b
-    min:   DeviceAssignment.decks_a_b
-    max:   DeviceAssignment.decks_c_d
+    path: "mapping.settings.deck_assignment"
+    value: DecksAssignment.AB
   }
 
   readonly property int leftDeckIdx: DeviceAssignment.leftDeckIdx(deckAssignmentProp.value)
@@ -25,7 +22,8 @@ Mapping
 
   Z1MK2 { name: "surface" }
 
-  Wire { from: "surface.mode"; to: RelativePropertyAdapter { path: mapping.propertiesPath + ".deck_assignment"; mode: RelativeMode.Increment; wrap: true } }
+  Wire { from: "surface.mode"; to: SetPropertyAdapter { path: "mapping.settings.deck_assignment"; value: DecksAssignment.CD } enabled: deckAssignmentProp.value == DecksAssignment.AB }
+  Wire { from: "surface.mode"; to: SetPropertyAdapter { path: "mapping.settings.deck_assignment"; value: DecksAssignment.AB } enabled: deckAssignmentProp.value == DecksAssignment.CD }
 
   Z1MK2Side
   {
@@ -86,7 +84,7 @@ Mapping
     channelFxShiftPushAction: channelFxShiftPushActionProp.value
   }
 
-  Wire { from: "surface.center.crossfader";         to: DirectPropertyAdapter { path: "app.traktor.mixer.xfader.adjust"   } }
+  Wire { from: "surface.center.crossfader";         to: DirectPropertyAdapter { path: "app.traktor.mixer.xfader.adjust"   } enabled: crossfaderEnabledProp.value }
   Wire { from: "surface.center.main";               to: DirectPropertyAdapter { path: "app.traktor.mixer.master_volume"   } }
   Wire { from: "surface.center.cue_mix";            to: DirectPropertyAdapter { path: "app.traktor.mixer.cue.mix"         } }
   Wire { from: "surface.center.cue_vol";            to: DirectPropertyAdapter { path: "app.traktor.mixer.cue.volume"      } }
@@ -113,6 +111,8 @@ Mapping
 
   MappingPropertyDescriptor { id: prelistenPushActionProp; path: "mapping.settings.prelisten_push_action"; type: MappingPropertyDescriptor.Integer; value: ButtonsActions.prelisten }
   MappingPropertyDescriptor { id: prelistenShiftPushActionProp; path: "mapping.settings.prelisten_shiftpush_action"; type: MappingPropertyDescriptor.Integer; value: ButtonsActions.prelisten }
+
+  MappingPropertyDescriptor { id: crossfaderEnabledProp; path: "mapping.settings.crossfader_enabled"; type: MappingPropertyDescriptor.Boolean; value: true }
 
   // Color override
   MappingPropertyDescriptor { path: "mapping.settings.eq_mode_buttons.custom_color"; type: MappingPropertyDescriptor.Integer; value: Color.Black }
