@@ -225,6 +225,14 @@ Item {
       audioStreamKey: ["PrimaryKey", deckInfo.primaryKey]
     }
 
+    // STEM MUTE INDICATOR //
+    Widgets.StemMuteIndicator
+    {
+      visible: deckInfo.deckType === DeckType.Stem && deckInfo.isLoaded
+      width: 2*display.infoBoxesWidth + display.spacing
+      deckInfo: display.deckInfo
+    }
+
   }
 
 

@@ -121,6 +121,37 @@ Item
   AppProperty { id: propStemSelectedFilterOn; path: selectedStemPath() + ".filter_on" }
   AppProperty { id: propStemSelectedColorId;  path: selectedStemPath() + ".color_id" }
 
+  // All 4 stems mute states and properties for the mute indicator
+  AppProperty { id: propStem1Muted;    path: "app.traktor.decks." + deckId + ".stems.1.muted" }
+  AppProperty { id: propStem2Muted;    path: "app.traktor.decks." + deckId + ".stems.2.muted" }
+  AppProperty { id: propStem3Muted;    path: "app.traktor.decks." + deckId + ".stems.3.muted" }
+  AppProperty { id: propStem4Muted;    path: "app.traktor.decks." + deckId + ".stems.4.muted" }
+  
+  AppProperty { id: propStem1Name;     path: "app.traktor.decks." + deckId + ".stems.1.name" }
+  AppProperty { id: propStem2Name;     path: "app.traktor.decks." + deckId + ".stems.2.name" }
+  AppProperty { id: propStem3Name;     path: "app.traktor.decks." + deckId + ".stems.3.name" }
+  AppProperty { id: propStem4Name;     path: "app.traktor.decks." + deckId + ".stems.4.name" }
+  
+  AppProperty { id: propStem1ColorId;  path: "app.traktor.decks." + deckId + ".stems.1.color_id" }
+  AppProperty { id: propStem2ColorId;  path: "app.traktor.decks." + deckId + ".stems.2.color_id" }
+  AppProperty { id: propStem3ColorId;  path: "app.traktor.decks." + deckId + ".stems.3.color_id" }
+  AppProperty { id: propStem4ColorId;  path: "app.traktor.decks." + deckId + ".stems.4.color_id" }
+
+  readonly property bool    stem1Muted:    propStem1Muted.value
+  readonly property bool    stem2Muted:    propStem2Muted.value
+  readonly property bool    stem3Muted:    propStem3Muted.value
+  readonly property bool    stem4Muted:    propStem4Muted.value
+  
+  readonly property string  stem1Name:     propStem1Name.value
+  readonly property string  stem2Name:     propStem2Name.value
+  readonly property string  stem3Name:     propStem3Name.value
+  readonly property string  stem4Name:     propStem4Name.value
+  
+  readonly property color   stem1Color:    colors.palette(0.5, propStem1ColorId.value)
+  readonly property color   stem2Color:    colors.palette(0.5, propStem2ColorId.value)
+  readonly property color   stem3Color:    colors.palette(0.5, propStem3ColorId.value)
+  readonly property color   stem4Color:    colors.palette(0.5, propStem4ColorId.value)
+
   ///////////////////////////////////////////////////
   /////// Stripe properties /////////////////////////
   ///////////////////////////////////////////////////
